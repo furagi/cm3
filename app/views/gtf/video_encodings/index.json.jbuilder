@@ -1,0 +1,1 @@
+json.array! @gtf_video_encodings, partial: 'gtf_video_encodings/gtf_video_encoding', as: :gtf_video_encoding

@@ -1,0 +1,19 @@
+h1 Listing gtf_uploads
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @uploads.each do |gtf_upload|
+      tr
+        td = link_to 'Show', gtf_upload
+        td = link_to 'Edit', edit_gtf_upload_path(gtf_upload)
+        td = link_to 'Destroy', gtf_upload, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Upload', new_gtf_upload_path

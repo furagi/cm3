@@ -1,0 +1,9 @@
+= form_for @scene_keyword do |f|
+  - if @scene_keyword.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@scene_keyword.errors.count, "error")} prohibited this gtf_scene_keyword from being saved:"
+      ul
+        - @scene_keyword.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

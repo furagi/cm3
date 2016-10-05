@@ -1,0 +1,9 @@
+= form_for @shared_country do |f|
+  - if @shared_country.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@shared_country.errors.count, "error")} prohibited this shared_country from being saved:"
+      ul
+        - @shared_country.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

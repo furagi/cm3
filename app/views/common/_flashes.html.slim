@@ -1,0 +1,6 @@
+- if flash[:alert]
+  = alert_box(type: :alert, content: flash[:alert])
+- if flash[:warning]
+  = alert_box(type: :warning, content: flash[:warning])
+- if flash[:notice]
+  = alert_box(content: flash[:notice])

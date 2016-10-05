@@ -1,0 +1,75 @@
+= form_for @website_user do |f|
+  - if @website_user.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@website_user.errors.count, "error")} prohibited this gtf_user from being saved:"
+      ul
+        - @website_user.errors.full_messages.each do |message|
+          li = message
+  .row
+    .medium-6.columns
+      = label_tag :username
+      = f.text_field :username, autofocus: true, placeholder: "Enter username"
+      = label_tag :last_name
+      = f.text_field :last_name, placeholder: "Enter last name"
+      = label_tag :email
+      = f.email_field :email, placeholder: "Enter email"
+      = label_tag :first_name
+      = f.text_field :first_name, placeholder: "Enter first name"
+      = label_tag :source_password, "Password"
+      = f.password_field :source_password, autocomplete: "off", placeholder: "Enter password"
+      = label_tag :source_password_confirmation, "Password confirmation"
+      = f.password_field :source_password_confirmation, autocomplete: "off", placeholder: "Confirm password"
+      = label_tag :created
+      = f.datetime_local_field :created
+      = label_tag :last_login
+      = f.datetime_local_field :last_login
+      = label_tag :logins
+      = f.number_field :logins, placeholder: "Enter logins"
+      = label_tag :active
+      = f.check_box :active, {}, '0', '1'
+      br
+      = label_tag :confirmation_code
+      = f.text_field :confirmation_code, placeholder: "Enter confirmation code"
+      = label_tag :country_id
+      = fill_select @website_user.country, Shared::Country, f
+      = label_tag :currency_id
+      = fill_select @website_user.currency, Shared::Currency, f
+      = label_tag :birth_date
+      = f.datetime_local_field :birth_date
+      = label_tag :last_fresh_id
+      = f.number_field :last_fresh_id, placeholder: "Enter last fresh ID"
+      = label_tag :sex
+      = f.select :sex, ['male','female'], selected: @website_user.sex
+      = label_tag :sexual_preferences
+      = f.select :sexual_preferences, ['heterosexual','homosexual','bisexual','transsexual'], selected: @website_user.sexual_preferences
+      = label_tag :vbulletin_id
+      = f.number_field :vbulletin_id, placeholder: "Enter vbulletin ID"
+      = label_tag :user_id
+      = f.number_field :user_id, placeholder: "Enter user ID"
+      = label_tag :tbdev_user_id
+      = f.number_field :tbdev_user_id, placeholder: "Enter tbdev user ID"
+      = label_tag :feed_auto_subscription
+      = f.select :feed_auto_subscription, ['allowed','denied'], selected: @website_user.feed_auto_subscription
+      = label_tag :is_trusted
+      = f.check_box :is_trusted, {}, 'yes', 'no'
+      br
+      = label_tag :external_user_id_i
+      = f.number_field :external_user_id_i, placeholder: "Enter external user ID_i"
+      = label_tag :external_user_id_s
+      = f.text_field :external_user_id_s, placeholder: "Enter external user ID_s"
+      = label_tag :notes
+      = f.text_field :notes, placeholder: "Enter notes"
+      = label_tag :password_update
+      = f.datetime_local_field :password_update
+      = label_tag :is_temporary_account
+      = f.check_box :is_temporary_account, {}, 'yes', 'no'
+      br
+      = label_tag :player_mode
+      = f.select :player_mode, ['standard','iframe'], selected: @website_user.player_mode
+      = label_tag :poll
+      = f.select :poll, ['show','hide', 'waiting_purchase'], selected: @website_user.poll
+      p
+        = f.button "Save", class: "button"
+
+
+

@@ -1,0 +1,41 @@
+h1 Storages
+
+= link_to 'Create Storage', new_gtf_storage_path
+table
+  thead
+    tr
+      th ID
+      th Storage priority
+      th Media type
+      th Storage URL
+      th Subpath1 counter
+      th Subpath1 treshold
+      th Subpath2 counter
+      th Used space (mb)
+      th Free space (mb)
+      th Minimum free space (mb)
+      th Status
+      th Licensing memcache queue
+      th Allow encoding on demand
+      th
+  tbody
+    - @storages.each do |storage|
+      tr
+        td = link_to storage.storage_id, edit_gtf_storage_path(storage)
+        td = storage.storage_priority
+        td = storage.media_type
+        td = storage.storage_url
+        td = storage.subpath1_counter
+        td = storage.subpath2_threshold
+        td = storage.subpath2_counter
+        td = storage.used_space_mb
+        td = storage.free_space_mb
+        td = storage.minimum_free_space_mb
+        td = storage.status
+        td = storage.licensing_memcache_queue
+        td = enabled_or_disabled(storage.allow_encoding_on_demand)
+        td.delete
+          = link_to storage, data: { confirm: 'Are you sure?' }, method: :delete
+            = fa_icon "close", class: ["close"]
+
+= paginate @storages

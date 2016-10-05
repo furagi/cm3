@@ -1,0 +1,9 @@
+= form_for @shared_currency do |f|
+  - if @shared_currency.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@shared_currency.errors.count, "error")} prohibited this shared_currency from being saved:"
+      ul
+        - @shared_currency.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

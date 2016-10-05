@@ -1,0 +1,9 @@
+= form_for @shared_website do |f|
+  - if @shared_website.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@shared_website.errors.count, "error")} prohibited this shared_website from being saved:"
+      ul
+        - @shared_website.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

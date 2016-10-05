@@ -1,0 +1,19 @@
+h1 Listing gtf_content_price_rates
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @content_price_rates.each do |gtf_content_price_rate|
+      tr
+        td = link_to 'Show', gtf_content_price_rate
+        td = link_to 'Edit', edit_gtf_content_price_rate_path(gtf_content_price_rate)
+        td = link_to 'Destroy', gtf_content_price_rate, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Content price rate', new_gtf_content_price_rate_path

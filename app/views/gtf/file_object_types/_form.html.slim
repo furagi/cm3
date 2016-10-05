@@ -1,0 +1,9 @@
+= form_for @file_object_type do |f|
+  - if @file_object_type.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@file_object_type.errors.count, "error")} prohibited this gtf_file_object_type from being saved:"
+      ul
+        - @file_object_type.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

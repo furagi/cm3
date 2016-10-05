@@ -1,0 +1,19 @@
+h1 Listing gtf_configurations
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @configurations.each do |gtf_configuration|
+      tr
+        td = link_to 'Show', gtf_configuration
+        td = link_to 'Edit', edit_gtf_configuration_path(gtf_configuration)
+        td = link_to 'Destroy', gtf_configuration, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Configuration', new_gtf_configuration_path

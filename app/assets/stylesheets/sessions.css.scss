@@ -1,0 +1,23 @@
+body.sessions {
+  main {
+    .row {
+      .columns {
+        form {
+          position: absolute;
+          top: 0; left: 0; bottom: 0; right: 0;
+          height: 294px;
+          width: 370px;
+          margin: auto;
+          // margin-top: 40%;
+          .log-in-form {
+            border: 1px solid #cacaca;
+            padding: 1rem;
+            border-radius: 3px;
+            position: relative;
+            bottom: 65px;
+          }
+        }
+      }
+    }
+  }
+}

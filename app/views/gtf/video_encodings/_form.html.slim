@@ -1,0 +1,9 @@
+= form_for @gtf_video_encoding do |f|
+  - if @gtf_video_encoding.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@gtf_video_encoding.errors.count, "error")} prohibited this gtf_video_encoding from being saved:"
+      ul
+        - @gtf_video_encoding.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

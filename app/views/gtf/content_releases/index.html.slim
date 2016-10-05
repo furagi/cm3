@@ -1,0 +1,19 @@
+h1 Listing gtf_content_releases
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @content_releases.each do |gtf_content_release|
+      tr
+        td = link_to 'Show', gtf_content_release
+        td = link_to 'Edit', edit_gtf_content_release_path(gtf_content_release)
+        td = link_to 'Destroy', gtf_content_release, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Content release', new_gtf_content_release_path

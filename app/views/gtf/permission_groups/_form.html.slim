@@ -1,0 +1,9 @@
+= form_for @permission_group do |f|
+  - if @permission_group.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@permission_group.errors.count, "error")} prohibited this gtf_permission_group from being saved:"
+      ul
+        - @permission_group.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

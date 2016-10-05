@@ -1,0 +1,9 @@
+= form_for @content_price_rate do |f|
+  - if @content_price_rate.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@content_price_rate.errors.count, "error")} prohibited this gtf_content_price_rate from being saved:"
+      ul
+        - @content_price_rate.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

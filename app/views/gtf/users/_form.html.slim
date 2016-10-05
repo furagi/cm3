@@ -1,0 +1,69 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@user.errors.count, "error")} prohibited this gtf_user from being saved:"
+      ul
+        - @user.errors.full_messages.each do |message|
+          li = message
+  .row
+    .medium-6.columns
+      = label_tag :username
+      = f.text_field :username, autofocus: true, placeholder: "Enter username"
+      = label_tag :permission_group_id
+      = fill_select(@user.permission_group, Gtf::PermissionGroup, f)
+      = label_tag :company_id
+      = fill_select(@user.company, Gtf::Company, f)
+      = label_tag :source_password, "Password"
+      = f.password_field :source_password, autocomplete: "off", placeholder: "Enter password"
+      = label_tag :source_password_confirmation, "Password confirmation"
+      = f.password_field :source_password_confirmation, autocomplete: "off", placeholder: "Confirm password"
+      = label_tag :name
+      = f.text_field :name, placeholder: "Enter name"
+      = label_tag :surname
+      = f.text_field :surname, placeholder: "Enter surname"
+      = label_tag :email
+      = f.email_field :email, placeholder: "Enter email"
+      = label_tag :phone
+      = f.telephone_field :phone, placeholder: "Enter phone"
+      = label_tag :mobile_phone
+      = f.telephone_field :mobile_phone, placeholder: "Enter mobile phone"
+      = label_tag :description
+      = f.text_field :description, placeholder: "Enter description"
+      = label_tag :enabled
+      = f.check_box :enabled, {}, "yes", "no"
+      br
+      / = label_tag :disabled
+      / = f.check_box :disabled, {autofocus: true}, "1", "0"
+      - unless @user.user_id.nil?
+        = label_tag :created
+        = f.datetime_local_field :created
+      = label_tag :last_login
+      = f.datetime_local_field :last_login
+      = label_tag :language
+      = f.number_field :language, placeholder: "Enter language"
+      = label_tag :ftp_password
+      = f.password_field :ftp_password, autocomplete: "off", placeholder: "Enter ftp password"
+      = label_tag :ftp_uid
+      = f.number_field :ftp_uid, placeholder: "Enter ftp uid"
+      = label_tag :ftp_gid
+      = f.number_field :ftp_gid, placeholder: "Enter ftp gid"
+      = label_tag :ftp_homedir
+      = f.text_field :ftp_homedir, placeholder: "Enter ftp homedir"
+      = label_tag :ftp_shell
+      = f.text_field :ftp_shell, placeholder: "Enter ftp shell"
+      = label_tag :ftp_expiration
+      = f.datetime_local_field :ftp_expiration
+      = label_tag :ftp_lastlogin
+      = f.datetime_local_field :ftp_lastlogin
+      = label_tag :ftp_lastlogout
+      = f.datetime_local_field :ftp_lastlogout
+      = label_tag :ftp_count
+      = f.number_field :ftp_count, placeholder: "Enter ftp count"
+      = label_tag :reg_ip
+      = f.text_field :reg_ip, placeholder: "Enter reg_ip"
+      = label_tag :reg_ip_location
+      = f.text_field :reg_ip_location, placeholder: "Enter reg_ip_location"
+      = label_tag :hide_poll
+      = f.check_box :hide_poll, {}, "YES", "NO"
+      p
+        = f.button "Save", class: "button"

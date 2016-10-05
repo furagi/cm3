@@ -1,0 +1,19 @@
+h1 Listing gtf_content_types
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @content_types.each do |gtf_content_type|
+      tr
+        td = link_to 'Show', gtf_content_type
+        td = link_to 'Edit', edit_gtf_content_type_path(gtf_content_type)
+        td = link_to 'Destroy', gtf_content_type, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Content type', new_gtf_content_type_path

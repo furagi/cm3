@@ -1,0 +1,1 @@
+json.partial! "gtf_file_object_type_families/gtf_file_object_type_family", gtf_file_object_type_family: @file_object_type_family

@@ -1,0 +1,1 @@
+json.array! @shared_currencies, partial: 'shared_currencies/shared_currency', as: :shared_currency

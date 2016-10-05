@@ -1,0 +1,19 @@
+h1 Listing gtf_permission_groups
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @permission_groups.each do |gtf_permission_group|
+      tr
+        td = link_to 'Show', gtf_permission_group
+        td = link_to 'Edit', edit_gtf_permission_group_path(gtf_permission_group)
+        td = link_to 'Destroy', gtf_permission_group, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Permission group', new_gtf_permission_group_path

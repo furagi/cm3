@@ -1,0 +1,9 @@
+.columns
+  h1 Editing user #{@website_user.username}
+
+  == render 'form'
+
+  = link_to 'Show', @website_user
+  '|
+  = link_to 'Back', idcert_website_users_path
+

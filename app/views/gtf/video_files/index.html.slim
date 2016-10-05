@@ -1,0 +1,74 @@
+h1 Video files
+- @video_files = @video_files.nil? ? video_files : @video_files
+= link_to 'Create video file', new_gtf_video_video_file_path(@video)
+.table-scroll
+  table
+    thead
+      tr
+        th ID
+        th
+        th Video ID
+        th Media ID
+        th Video encoding ID
+        th Source video file ID
+        th Created
+        th Filename
+        th Filesize
+        th Duration
+        th Width
+        th Height
+        th Frame count
+        th Frame rate
+        th Bitrate
+        th Encode start
+        th Encode finish
+        th Encode status
+        th Prepared for wm embedding
+        th Video order
+        th Ratio
+        th Status
+        th Is expirable
+        th
+    tbody
+      - @video_files.each do |video_file|
+        tr
+          td = link_to video_file.video_file_id, edit_gtf_video_file_path(video_file)
+          td
+            - if video_file.encode_status == "ok"
+              == render video_file
+          td = link_to_edit_resource(video_file.video, "video_id")
+          td = link_to_edit_resource(video_file.media, "media_id")
+          td = link_to_edit_resource(video_file.video_encoding, "name")
+          td
+            - unless video_file.source_video_file.nil?
+              - source = video_file.source_video_file
+              = link_to source.video_file_id, edit_gtf_video_file_path(source)
+          td = video_file.created
+          td = video_file.filename
+          td = video_file.filesize
+          td = video_file.duration
+          td = video_file.width
+          td = video_file.height
+          td = video_file.frame_count
+          td = video_file.frame_rate
+          td = video_file.bitrate
+          td = video_file.encode_start
+          td = video_file.encode_finish
+          td = video_file.encode_status
+          td = video_file.prepared_for_wm_embedding
+          td = video_file.video_order
+          td = video_file.ratio
+          td = video_file.status
+          td = video_file.is_expirable
+          td.delete
+            = link_to gtf_video_file_path(video_file), data: { confirm: 'Are you sure?' }, method: :delete
+              = fa_icon "close", class: ["close"]
+
+/ if video_files where opened as video_files, not in the video tab
+- if @video.nil?
+  = paginate @video_files
+
+
+
+
+

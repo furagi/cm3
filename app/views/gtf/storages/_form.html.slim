@@ -1,0 +1,34 @@
+= form_for @storage do |f|
+  - if @storage.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@storage.errors.count, "error")} prohibited this gtf_storage from being saved:"
+      ul
+        - @storage.errors.full_messages.each do |message|
+          li = message
+  .row
+    .medium-6.columns
+      = label_tag :storage_priority
+      = f.number_field :storage_priority, autofocus: true, placeholder: 'Enter storage priority'
+      = label_tag :media_type
+      = f.select :media_type, ["image", "video", "file", "ppm"], selected: @storage.media_type, placeholder: 'Select storage type'
+      = label_tag :storage_url
+      = f.text_field :storage_url, placeholder: 'Enter storage url'
+      = label_tag :subpath1_counter
+      = f.number_field :subpath1_counter, placeholder: 'Enter subpath1 counter'
+      = label_tag :subpath2_threshold
+      = f.number_field :subpath2_threshold, placeholder: 'Enter subpath2 threshold'
+      = label_tag :used_space_mb
+      = f.number_field :used_space_mb, placeholder: 'Enter used space in mb'
+      = label_tag :free_space_mb
+      = f.number_field :free_space_mb, placeholder: 'Enter free space in mb'
+      = label_tag :minimum_free_space_mb
+      = f.number_field :minimum_free_space_mb, placeholder: 'Enter minimum free space in mb'
+      = label_tag :status
+      = f.select :status, ["archive", "active", "free"], selected: @storage.status, placeholder: 'Select storage status'
+      = label_tag :licensing_memcache_queue
+      = f.text_field :licensing_memcache_queue, placeholder: 'Enter licensing memcache queue'
+      = label_tag :allow_encoding_on_demand
+      = f.check_box :allow_encoding_on_demand, {}, "yes", "no"
+      p
+        = f.button "Save", class: "button"
+

@@ -1,0 +1,1 @@
+json.array! @shared_websites, partial: 'shared_websites/shared_website', as: :shared_website

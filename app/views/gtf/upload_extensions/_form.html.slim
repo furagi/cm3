@@ -1,0 +1,9 @@
+= form_for @upload_extension do |f|
+  - if @upload_extension.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@upload_extension.errors.count, "error")} prohibited this gtf_upload_extension from being saved:"
+      ul
+        - @upload_extension.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

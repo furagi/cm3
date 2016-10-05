@@ -1,0 +1,74 @@
+h1 Website users
+
+= link_to 'Create user', new_idcert_website_user_path
+.table-scroll
+  table
+    thead
+      tr
+        th ID
+        th Active
+        th Username
+        th Created
+        th Last login
+        th Full name
+        th Email
+        / th Password
+        th Logins
+        th Confirmation code
+        th Country
+        th Currency
+        th Birth date
+        th Last fresh ID
+        th Sex
+        th Sexual preferences
+        th Vbulletin ID
+        th User ID
+        th Tbdev user ID
+        th Feed auto subscription
+        th Is trusted
+        th External user ID i
+        th External user ID s
+        th Notes
+        th Password update
+        th Is temporary account
+        th Player mode
+        th Poll
+        th
+    tbody
+      - @website_users.each do |website_user|
+        tr
+          th
+            = link_to(website_user.website_user_id, edit_idcert_website_user_path(website_user))
+          th
+            = enabled_or_disabled(website_user.active)
+          th = website_user.username
+          th = value_or_nil(website_user.created, "to_date")
+          th = value_or_nil(website_user.last_login, "to_date")
+          th = full_name(website_user)
+          th = website_user.email
+          / th = website_user.password
+          th = website_user.logins
+          th = website_user.confirmation_code
+          th = link_to_edit_resource(website_user.country, "name")
+          th = link_to_edit_resource(website_user.currency, "name")
+          th = website_user.birth_date
+          th = website_user.last_fresh_id
+          th = website_user.sex
+          th = website_user.sexual_preferences
+          th = website_user.vbulletin_id
+          th = website_user.user_id
+          th = website_user.tbdev_user_id
+          th = website_user.feed_auto_subscription
+          th = website_user.is_trusted
+          th = website_user.external_user_id_i
+          th = website_user.external_user_id_s
+          th = website_user.notes
+          th = website_user.password_update
+          th = website_user.is_temporary_account
+          th = website_user.player_mode
+          th = website_user.poll
+          td.delete
+            = link_to website_user, data: { confirm: 'Are you sure?' }, method: :delete
+              = fa_icon "close", class: ["close"]
+
+= paginate @website_users

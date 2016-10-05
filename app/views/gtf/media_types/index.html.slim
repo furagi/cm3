@@ -1,0 +1,19 @@
+h1 Listing gtf_media_types
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @media_types.each do |gtf_media_type|
+      tr
+        td = link_to 'Show', gtf_media_type
+        td = link_to 'Edit', edit_gtf_media_type_path(gtf_media_type)
+        td = link_to 'Destroy', gtf_media_type, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Media type', new_gtf_media_type_path

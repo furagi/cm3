@@ -1,0 +1,9 @@
+= form_for @image_encoded do |f|
+  - if @image_encoded.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@image_encoded.errors.count, "error")} prohibited this gtf_image_encoded from being saved:"
+      ul
+        - @image_encoded.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

@@ -1,0 +1,19 @@
+h1 Listing gtf_directors
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @directors.each do |gtf_director|
+      tr
+        td = link_to 'Show', gtf_director
+        td = link_to 'Edit', edit_gtf_director_path(gtf_director)
+        td = link_to 'Destroy', gtf_director, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Director', new_gtf_director_path

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one:
+  video_id: 3
+  upload_id: 5260
+  file_object_type_id: 13
+  company_id: 1
+  user_id: 1
+  content_id: 2650
+  storage_id: 2
+  subpath: 1/719
+  video_order: 0
+  status: active
+  url: test_url
+  subscription_news_state: waiting

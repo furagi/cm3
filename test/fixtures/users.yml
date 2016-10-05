@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+# one:
+#   username: tester
+#   permission_group_id: 1
+#   company_id: 1
+# column: value
+#
+# two: {}
+#  column: value
+one:
+  user_id: 1
+  username: tester0
+  created: <%= Time.now %>
+  password: 0aa8d4dae31b832dd2d76d431f9bac7e3117039a
+  permission_group_id: 1
+  company_id: 1
+  name: tester
+  surname: test
+  email: test
+  description: test
+  disabled: 0
+  last_login: <%= Time.now %>
+  language: 1
+  ftp_password: wqe
+  ftp_uid: 1
+  ftp_gid: 1
+  ftp_homedir: test
+  ftp_shell: $
+  ftp_expiration: <%= Time.now %>
+  ftp_lastlogin: <%= Time.now %>
+  ftp_lastlogout: <%= Time.now %>
+  ftp_count: 1

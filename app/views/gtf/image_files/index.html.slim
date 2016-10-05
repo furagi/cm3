@@ -1,0 +1,19 @@
+h1 Listing gtf_image_files
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @image_files.each do |gtf_image_file|
+      tr
+        td = link_to 'Show', gtf_image_file
+        td = link_to 'Edit', edit_gtf_image_file_path(gtf_image_file)
+        td = link_to 'Destroy', gtf_image_file, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Image file', new_gtf_image_file_path

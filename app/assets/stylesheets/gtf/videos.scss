@@ -1,0 +1,15 @@
+// Place all the styles related to the Gtf::Videos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+ *= require video-js.min
+ *= require videojs-resolution-switcher
+ */
+
+.video-js .vjs-big-play-button {
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

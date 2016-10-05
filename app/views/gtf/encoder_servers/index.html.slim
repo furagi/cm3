@@ -1,0 +1,25 @@
+h1 Encoder servers
+
+= link_to 'Create encoder server', new_gtf_encoder_server_path
+table
+  thead
+    tr
+      th ID
+      th Name
+      th Description
+      th Status
+      th Usable
+      th
+  tbody
+    - @encoder_servers.each do |encoder_server|
+      tr
+        td = link_to encoder_server.encoder_server_id, edit_gtf_encoder_server_path(encoder_server)
+        td = encoder_server.name
+        td = encoder_server.description
+        td = encoder_server.status
+        td = enabled_or_disabled(encoder_server.is_usable)
+        td.delete
+          = link_to encoder_server, data: { confirm: 'Are you sure?' }, method: :delete
+            = fa_icon "close", class: ["close"]
+
+= paginate @encoder_servers

@@ -1,0 +1,7 @@
+.row
+  .columns
+    h1 New video file
+
+    = render partial: "form", locals: {url: gtf_video_video_files_path(@video)}
+
+    = link_to 'Back', edit_gtf_video_path(@video)

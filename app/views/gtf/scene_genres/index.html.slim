@@ -1,0 +1,19 @@
+h1 Listing gtf_scene_genres
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @scene_genres.each do |gtf_scene_genre|
+      tr
+        td = link_to 'Show', gtf_scene_genre
+        td = link_to 'Edit', edit_gtf_scene_genre_path(gtf_scene_genre)
+        td = link_to 'Destroy', gtf_scene_genre, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Scene genre', new_gtf_scene_genre_path

@@ -1,0 +1,2 @@
+module Gtf::LabelsHelper
+end

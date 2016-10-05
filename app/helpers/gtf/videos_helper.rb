@@ -1,0 +1,2 @@
+module Gtf::VideosHelper
+end
