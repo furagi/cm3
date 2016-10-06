@@ -7,11 +7,6 @@ class Gtf::ImageFile < Gtf::MediaFile
   belongs_to :image_encoding, class_name: "Gtf::ImageEncoding"
   belongs_to :image, class_name: "Gtf::Image"
 
-  def url
-    "http://sachinchoolur.github.io/lightGallery/static/img/1-1600.jpg"
-  end
-
-
   private
 
     def parent
