@@ -1,7 +1,7 @@
 = form_for @website_user do |f|
   - if @website_user.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@website_user.errors.count, "error")} prohibited this gtf_user from being saved:"
+      h2 = "#{pluralize(@website_user.errors.count, "error")} prohibited this website user from being saved:"
       ul
         - @website_user.errors.full_messages.each do |message|
           li = message
@@ -19,8 +19,9 @@
       = f.password_field :source_password, autocomplete: "off", placeholder: "Enter password"
       = label_tag :source_password_confirmation, "Password confirmation"
       = f.password_field :source_password_confirmation, autocomplete: "off", placeholder: "Confirm password"
-      = label_tag :created
-      = f.datetime_local_field :created
+      - unless @website_user.website_user_id.nil?
+        = label_tag :created
+        = f.datetime_local_field :created
       = label_tag :last_login
       = f.datetime_local_field :last_login
       = label_tag :logins

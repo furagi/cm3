@@ -32,7 +32,7 @@ class Idcert::WebsiteUsersController < CommonController
           :is_temporary_account,
           :player_mode,
           :poll
-        ])
+        ])[:website_user]
       }
     end
 end
