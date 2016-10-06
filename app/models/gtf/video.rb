@@ -10,5 +10,7 @@ class Gtf::Video < Gtf::Base
   belongs_to :content, class_name: "Gtf::Content"
   belongs_to :storage, class_name: "Gtf::Storage"
   has_many :video_files, class_name: "Gtf::VideoFile"
+
   before_create :set_created
+
 end

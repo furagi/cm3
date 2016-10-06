@@ -1,7 +1,8 @@
-.columns
-  h1 New scene
+.row
+  .columns
+    h1 New image
 
-  == render 'form'
+    = render 'form', locals: {url: gtf_content_images_path(@content)}
 
-  = link_to 'Back', gtf_scenes_path
+    = link_to 'Back', edit_gtf_content_path(@content)
 

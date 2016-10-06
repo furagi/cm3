@@ -1,12 +1,12 @@
 h1 Videos
 - @videos = @videos.nil? ? videos : @videos
-= link_to 'Create video', new_resource_url
+= link_to 'Create video', new_gtf_content_video_path(@content)
 .table-scroll
   table
     thead
       tr
         th ID
-        th Video
+        th
         th Upload ID
         th File object type ID
         th Company ID
@@ -49,6 +49,5 @@ h1 Videos
 / if videos where opened as videos, not in the content tab
 - if @content.nil?
   = paginate @videos
-- else
   = link_to 'Back', edit_gtf_content_path(@content)
 

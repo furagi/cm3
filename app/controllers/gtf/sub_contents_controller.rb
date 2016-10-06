@@ -1,20 +1,20 @@
 class Gtf::SubContentsController < CommonController
 
   def update
-    super { edit_parent_url }
+    update! { edit_parent_url }
   end
 
   def destroy
-    super { edit_parent_url }
+    destroy! { edit_parent_url }
   end
 
   def create
-    super { edit_parent_url }
+    create! { edit_parent_url }
   end
 
   private
     def edit_parent_url
-      url = {action: "edit", controller: parent_controller, id: parent_id}
+      {action: "edit", controller: parent_controller, id: parent_id}
     end
 
 end

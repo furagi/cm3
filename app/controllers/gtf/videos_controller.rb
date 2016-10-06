@@ -14,15 +14,21 @@ class Gtf::VideosController < Gtf::SubContentsController
 
     def permitted_params
       {:video => params.permit(:gtf_video => [
+          :upload_id,
+          :file_object_type_id,
+          :company_id,
+          :user_id,
           :content_id,
-          :video_type_id,
-          :video_name,
-          :external_data,
-          :sef_name,
-          :access_level,
-          :cm_sorting_index
+          # :secondary_content_id,
+          :storage_id,
+          :subpath,
+          :url,
+          :video_order,
+          :created,
+          :status,
+          :subscription_news_state,
+          :exporting_to_dmca_status
         ])[:gtf_video]
       }
     end
 end
-

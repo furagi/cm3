@@ -1,64 +1,42 @@
-= form_for @scene do |f|
-  - if @scene.errors.any?
+- @image = @image.nil? ? image : @image
+= form_for @image, url: locals[:url] do |f|
+  - if @image.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@scene.errors.count, "error")} prohibited this gtf_user from being saved:"
+      h2 = "#{pluralize(@image.errors.count, "error")} prohibited this gtf_image from being saved:"
       ul
-        - @scene.errors.full_messages.each do |message|
+        - @image.errors.full_messages.each do |message|
           li = message
   .row
     .medium-6.columns
-      = label_tag :name
-      = f.text_field :name, autofocus: true, placeholder: "Enter name"
-      = label_tag :user_id
-      = fill_select(@scene.user, Gtf::User, "username", f)
-      / = label_tag :editor_id
-      / = fill_select(@scene.editor, Gtf::Editor, f)
+      = label_tag :upload_id
+      = f.number_field :upload_id, autofocus: true, placeholder: "Enter upload ID"
+      = label_tag :file_object_type_id
+      = fill_select(@image.file_object_type, Gtf::FileObjectType, f)
       = label_tag :company_id
-      = fill_select(@scene.company, Gtf::Company, f)
+      = fill_select(@image.company, Gtf::Company, f)
+      = label_tag :user_id
+      = fill_select(@image.user, Gtf::User, "username", f)
       = label_tag :content_id
-      = fill_select(@scene.content, Gtf::Content, "content_name", f)
-      = label_tag :line_id
-      = fill_select(@scene.line, Gtf::Line, f)
-      = label_tag :director_id
-      = fill_select(@scene.director, Gtf::Director, f)
-      / = label_tag :studio_id
-      / = fill_select(@scene.studio, Gtf::Studio, f)
-      / link_scene_status_id
-      - unless @scene.scene_id.nil?
+      = f.number_field :content_id, placeholder: "Enter content ID"
+      / = label_tag :secondary_content_id
+      / secondary_content_id     | int(11) unsigned
+      = label_tag :storage_id
+      = fill_select(@image.storage, Gtf::Storage, "storage_id", f)
+      = label_tag :subpath
+      = f.text_field :subpath, placeholder: "Enter subpath"
+      = label_tag :url
+      = f.text_field :url, placeholder: "Enter url"
+      = label_tag :image_order
+      = f.number_field :image_order, placeholder: "Enter image_order"
+      - unless @image.image_id.nil?
         = label_tag :created
-        = f.datetime_local_field :created, autofocus: true
-      = label_tag :tape
-      = f.text_field :tape, autofocus: true, placeholder: "Enter tape"
-      = label_tag :director_rating
-      = f.select :director_rating, ['1','2','3','4','5','6','7','8','9','10'], select: @scene.director_rating, autofocus: true
-      = label_tag :director_comment
-      = f.text_field :director_comment, autofocus: true, placeholder: "Enter director comment"
-      = label_tag :seo_title
-      = f.text_field :seo_title, autofocus: true, placeholder: "Enter seo title"
-      = label_tag :small_description
-      = f.text_field :small_description, autofocus: true, placeholder: "Enter small description"
-      = label_tag :big_description
-      = f.text_field :big_description, autofocus: true, placeholder: "Enter big description"
-      = label_tag :keywords
-      = f.text_field :keywords, autofocus: true, placeholder: "Enter keywords"
-      = label_tag :talents
-      = f.text_field :talents, autofocus: true, placeholder: "Enter talents"
-      = label_tag :bts_description
-      = f.text_field :bts_description, autofocus: true, placeholder: "Enter bts description"
-      = label_tag :behind_info
-      = f.text_field :behind_info, autofocus: true, placeholder: "Enter behind info"
-      = label_tag :date_of_production
-      = f.date_field :date_of_production, autofocus: true
-      = label_tag :runtime
-      = f.time_field :runtime, autofocus: true
-      = label_tag :cost
-      = f.number_field :cost, autofocus: true, placeholder: "Enter cost"
-      / sales_at_day_100         | decimal(8,2) unsigned
-      / sales_at_day_547         | decimal(8,2) unsigned
-      = label_tag :external_data
-      = f.number_field :external_data, autofocus: true, placeholder: "Enter external data"
-      = label_tag :need_to_extract_metadata
-      = f.check_box :need_to_extract_metadata, autofocus: true
+        = f.datetime_local_field :created
+      = label_tag :status
+      = f.select :status, ['active','archive'], selected: @image.status, placeholder: "Select status"
+      = label_tag :source_video_file_id
+      = f.number_field :source_video_file_id, placeholder: "Enter source video file id"
+      = label_tag :screenshots_rate
+      = f.number_field :screenshots_rate, step: :any, placeholder: "Enter screenshots rate"
       p
         = f.button "Save", class: "button"
 

@@ -1,75 +1,55 @@
-h1 Scenes
-
-= link_to 'Create scene', new_gtf_scene_path
+h1 Images
+- @images = @images.nil? ? images : @images
+= link_to 'Create image', new_gtf_content_image_path(@content)
 .table-scroll
   table
     thead
       tr
         th ID
-        th Name
-        th Big description
-        th Keywords
-        th Line
-        th Need to extract metadata
-        th User
-        / th Editor
-        th Company
-        th Content
-        th Director
-        / th Studio
-        / th Link scene status
+        th Image
+        th Upload ID
+        th File object type ID
+        th Company ID
+        th User ID
+        th Content ID
+        / th Secondary content ID
+        th Storage ID
+        th Subpath
+        th Url
+        th Video order
         th Created
-        th Tape
-        th Director rating
-        th Director comment
-        th Seo title
-        th Small description
-        th Talents
-        th Bts description
-        th Behind info
-        th Date of production
-        th Runtime
-        th Cost
-        th Sales at day 100
-        th Sales at day 547
-        th External data
-
+        th Status
+        th Source video file ID
+        th Screenshots rate
         th
     tbody
-      - @scenes.each do |scene|
+      - @images.each do |image|
         tr
+          td = link_to image.image_id, edit_gtf_image_path(image)
           td
-            = link_to scene.scene_id, edit_gtf_scene_path(scene)
+            = render image
+          td = link_to_edit_resource(image.upload, "upload_id")
+          td = link_to_edit_resource(image.file_object_type, "name")
+          td = link_to_edit_resource(image.company, "name")
+          td = link_to_edit_resource(image.user, "name")
+          td = link_to_edit_resource(image.content, "content_id")
+          / td = image.secondary_content_id
+          td = image.storage_id
+          td = image.subpath
+          td = image.url
+          td = image.image_order
+          td = image.created
+          td = image.status
           td
-            = link_to scene.name, edit_gtf_scene_path(scene)
-          td = scene.big_description
-          td = scene.keywords
-          td = link_to_edit_resource(scene.line, "name")
-          td = enabled_or_disabled(scene.need_to_extract_metadata)
-          td = link_to_edit_resource(scene.user, "name")
-          / td = scene.editor_id
-          td = link_to_edit_resource(scene.company, "name")
-          td = link_to_edit_resource(scene.content, "content_name")
-          td = link_to_edit_resource(scene.director, "name")
-          / td = value_or_nil(scene.studio, "name")
-          / td = scene.link_scene_status_id
-          td = value_or_nil(scene.created, "to_date")
-          td = scene.tape
-          td = scene.director_rating
-          td = scene.director_comment
-          td = scene.seo_title
-          td = scene.small_description
-          td = scene.talents
-          td = scene.bts_description
-          td = scene.behind_info
-          td = scene.date_of_production
-          td = scene.runtime
-          td = scene.cost
-          td = scene.sales_at_day_100
-          td = scene.sales_at_day_547
-          td = scene.external_data
+            - unless image.source_video_file.nil?
+              - source = image.source_video_file
+              = link_to source.video_file_id, edit_gtf_video_file_path(source)
+          td = image.screenshots_rate
           td.delete
-            = link_to scene, data: { confirm: 'Are you sure?' }, method: :delete
+            = link_to gtf_image_path(image), data: { confirm: 'Are you sure?' }, method: :delete
               = fa_icon "close", class: ["close"]
 
-= paginate @scenes
+/ if images where opened as images, not in the content tab
+- if @content.nil?
+  = link_to 'Back', edit_gtf_content_path(@content)
+  = paginate @images

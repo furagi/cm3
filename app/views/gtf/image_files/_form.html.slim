@@ -1,9 +1,56 @@
-= form_for @image_file do |f|
-  - if @image_file.errors.any?
+/ url should be passed to template as locals
+= form_for @video_file, url: url do |f|
+  - if @video_file.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@image_file.errors.count, "error")} prohibited this gtf_image_file from being saved:"
+      h2 = "#{pluralize(@video_file.errors.count, "error")} prohibited this video file from being saved:"
       ul
-        - @image_file.errors.full_messages.each do |message|
+        - @video_file.errors.full_messages.each do |message|
           li = message
+  .row
+    .medium-6.columns
+      = label_tag :video_id
+      = f.number_field :video_id, value: @video.video_id, autofocus: true, placeholder: "Enter video ID"
+      = label_tag :media_id
+      = f.number_field :media_id, placeholder: "Enter media ID"
+      = label_tag :video_encoding_id
+      = fill_select(@video_file.video_encoding, Gtf::VideoEncoding, f)
+      = label_tag :source_video_file_id
+      = f.number_field :source_video_file_id, placeholder: "Enter source video file ID"
+      - unless @video_file.video_file_id.nil? #show only if we editing already existing video_file
+        = label_tag :created
+        = f.datetime_local_field :created
+      = label_tag :filename
+      = f.text_field :filename, placeholder: "Enter filename"
+      = label_tag :filesize
+      = f.number_field :filesize, placeholder: "Enter filesize"
+      = label_tag :duration
+      = f.number_field :duration, step: :any, placeholder: "Enter duration"
+      = label_tag :width
+      = f.number_field :width, placeholder: "Enter width"
+      = label_tag :height
+      = f.number_field :height, placeholder: "Enter height"
+      = label_tag :frame_count
+      = f.number_field :frame_count, placeholder: "Enter frame_count"
+      = label_tag :frame_rate
+      = f.number_field :frame_rate, step: :any, placeholder: "Enter frame rate"
+      = label_tag :bitrate
+      = f.number_field :bitrate, placeholder: "Enter bitrate"
+      = label_tag :encode_start
+      = f.datetime_local_field :encode_start
+      = label_tag :encode_finish
+      = f.datetime_local_field :encode_finish
+      = label_tag :encode_status
+      = f.select :encode_status, ['processing','ok','error'], selected: @video_file.encode_status, placeholder: "Select encode status"
+      = label_tag :prepared_for_wm_embedding
+      = f.select :prepared_for_wm_embedding, ['no','yes'], selected: @video_file.prepared_for_wm_embedding, placeholder: "Select prepared for wm embedding"
+      = label_tag :video_order
+      = f.number_field :video_order, placeholder: "Enter video_order"
+      = label_tag :ratio
+      = f.select :ratio, ['16:9','4:3'], selected: @video_file.ratio, placeholder: "Select ratio"
+      = label_tag :status
+      = f.select :status, ['exists','expired'], selected: @video_file.status, placeholder: "Select status"
+      = label_tag :is_expirable
+      = f.select :is_expirable, ['yes','no'], selected: @video_file.is_expirable, placeholder: "Select is expirable"
 
-  .actions = f.submit
+      p
+        = f.button "Save", class: "button"

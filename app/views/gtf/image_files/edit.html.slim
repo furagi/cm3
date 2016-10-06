@@ -1,8 +1,6 @@
-h1 Editing gtf_image_file
+.columns
+  h1 Video file #{@video_file.video_file_id}
 
-== render 'form'
+  = render partial: "form", locals: {url: @video_file}
 
-= link_to 'Show', @image_file
-'|
-= link_to 'Back', gtf_image_files_path
-
+  = link_to 'Back', edit_gtf_video_path(@video)

@@ -18,6 +18,7 @@
 #= require modernizr
 #= require_tree .
 #= require_self
+
 $ ->
   $(document).foundation()
   $(".editable").click ->

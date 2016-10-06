@@ -1,29 +1,18 @@
 .columns
-  h1 #{@scene.name}
+  h1 Image #{@image.image_id}
 
-  ul#scene_tabs.tabs(data-tabs)
+  ul#image_tabs.tabs(data-tabs)
     li.tabs-title.is-active
-      a(href="#scene_info_tab" aria-selected="true") Edit scene info
-    li.tabs-title
-      a(href="#scene_videos_tab") Videos
-    li.tabs-title
-      a(href="#scene_images_tab") Images
-    li.tabs-title
-      a(href="#scene_content_tab") Content
-  .tabs-content(data-tabs-content="scene_tabs")
-    #scene_info_tab.tabs-panel.is-active
-      == render 'form'
+      a(href="#image_info_tab" aria-selected="true") Edit image info
+    - if (@image.image_files && @image.image_files.length > 0)
+      li.tabs-title
+        a(href="#image_files_tab") Image files
 
-    / #scene_videos_tab.tabs-panel
-    /   = render 'gtf/videos/show'
-    / #scene_images_tab.tabs-panel
-    /   = render 'gtf/images/show'
+  .tabs-image(data-tabs-content="image_tabs")
+    #image_info_tab.tabs-panel.is-active
+      = render 'form', locals: {url: gtf_image_path}
+    - if (@image.image_files && @image.image_files.length > 0)
+      #image_files_tab.tabs-panel
+        = render file: "gtf/image_files/index", locals: {image_files: @image.image_files}
 
-    #scene_content_tab.tabs-panel
-      == render 'gtf/contents/edit'
-
-
-  = link_to 'Show', @scene
-  '|
-  = link_to 'Back', gtf_scenes_path
-
+  = link_to 'Back', edit_gtf_content_path(@content)

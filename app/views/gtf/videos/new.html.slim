@@ -1,8 +1,8 @@
 .row
   .columns
-    h1 New user
+    h1 New video
 
-    == render 'form'
+    = render 'form', locals: {url: gtf_content_videos_path(@content)}
 
-    = link_to 'Back', gtf_users_path
+    = link_to 'Back', edit_gtf_content_path(@content)
 
