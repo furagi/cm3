@@ -2,7 +2,7 @@
   .columns
     h1 New image
 
-    = render 'form', locals: {url: gtf_content_images_path(@content)}
+    = render 'form', url: gtf_content_images_path(@content)
 
     = link_to 'Back', edit_gtf_content_path(@content)
 

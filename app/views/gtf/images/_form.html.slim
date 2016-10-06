@@ -1,5 +1,5 @@
 - @image = @image.nil? ? image : @image
-= form_for @image, url: locals[:url] do |f|
+= form_for @image, url: url do |f|
   - if @image.errors.any?
     #error_explanation
       h2 = "#{pluralize(@image.errors.count, "error")} prohibited this gtf_image from being saved:"

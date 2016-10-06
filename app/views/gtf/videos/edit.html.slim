@@ -10,7 +10,7 @@
 
   .tabs-video(data-tabs-content="video_tabs")
     #video_info_tab.tabs-panel.is-active
-      = render 'form', locals: {url: gtf_video_path}
+      = render 'form', url: @video
     - if (@video.video_files && @video.video_files.length > 0)
       #video_files_tab.tabs-panel
         = render file: "gtf/video_files/index", locals: {video_files: @video.video_files}

@@ -10,7 +10,7 @@
 
   .tabs-image(data-tabs-content="image_tabs")
     #image_info_tab.tabs-panel.is-active
-      = render 'form', locals: {url: gtf_image_path}
+      = render 'form', url: @image
     - if (@image.image_files && @image.image_files.length > 0)
       #image_files_tab.tabs-panel
         = render file: "gtf/image_files/index", locals: {image_files: @image.image_files}

@@ -1,5 +1,5 @@
 - @video = @video.nil? ? video : @video
-= form_for @video, url: locals[:url] do |f|
+= form_for @video, url: url do |f|
   - if @video.errors.any?
     #error_explanation
       h2 = "#{pluralize(@video.errors.count, "error")} prohibited this gtf_video from being saved:"

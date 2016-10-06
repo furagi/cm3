@@ -1,6 +1,6 @@
 .columns
-  h1 Video file #{@video_file.video_file_id}
+  h1 Image file #{@image_file.image_file_id}
 
-  = render partial: "form", locals: {url: @video_file}
+  = render "form", url: @image_file
 
-  = link_to 'Back', edit_gtf_video_path(@video)
+  = link_to 'Back', edit_gtf_image_path(@image)
