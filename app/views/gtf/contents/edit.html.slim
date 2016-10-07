@@ -4,27 +4,28 @@
   ul#content_tabs.tabs(data-tabs)
     li.tabs-title.is-active
       a(href="#content_info_tab" aria-selected="true") Edit content info
-    - unless @content.scene.nil?
-      li.tabs-title
-        a(href="#scene_info_tab") Edit scene info
-    - if (@content.videos && @content.videos.length > 0)
-      li.tabs-title
-        a(href="#content_videos_tab") Videos
-    - if (@content.images && @content.images.length > 0)
-      li.tabs-title
-        a(href="#content_images_tab") Images
+    li.tabs-title
+      a(href="#scene_info_tab") Edit scene info
+    li.tabs-title
+      a(href="#content_videos_tab") Videos
+    li.tabs-title
+      a(href="#content_images_tab") Images
+    li.tabs-title
+      a(href="#content_uploads_tab") Uploads
 
   .tabs-content(data-tabs-content="content_tabs")
     #content_info_tab.tabs-panel.is-active
-      == render 'form'
-    - unless @content.scene.nil?
-      #scene_info_tab.tabs-panel
+      = render 'form'
+    #scene_info_tab.tabs-panel
+      - if @content.scene.nil?
+        = link_to "Add scene", new_gtf_scene_path
+      - else
         = render @content.scene
-    - if (@content.videos && @content.videos.length > 0)
-      #content_videos_tab.tabs-panel
-        = render file: "gtf/videos/index", locals: {videos: @content.videos}
-    - if (@content.images && @content.images.length > 0)
-      #content_images_tab.tabs-panel
-        = render file: "gtf/images/index", locals: {images: @content.images}
+    #content_videos_tab.tabs-panel
+      = render file: "gtf/videos/index", locals: {videos: @content.videos}
+    #content_images_tab.tabs-panel
+      = render file: "gtf/images/index", locals: {images: @content.images}
+    #content_uploads_tab.tabs-panel
+      = render file: "gtf/uploads/index", locals: {uploads: @content.uploads}
   = link_to 'Back', gtf_contents_path
 

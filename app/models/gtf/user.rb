@@ -1,17 +1,18 @@
 require 'digest/sha1'
 
 class Gtf::User < Gtf::Base
+
   include Created
 
+  self.table_name = "user"
+  belongs_to :permission_group, class_name: "Gtf::PermissionGroup"
+  belongs_to :company, class_name: "Gtf::Company"
   attr_accessor :source_password
   before_save :encrypt_source_password
   after_save :clear_source_password
   before_create :set_created
-  self.table_name = "user"
   validates_presence_of :username
   validates :source_password, :confirmation => true #password_confirmation attr
-  belongs_to :permission_group, class_name: "Gtf::PermissionGroup"
-  belongs_to :company, class_name: "Gtf::Company"
 
   def self.authenticate(username, password)
     user = self.find_by_username(username)
