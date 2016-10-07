@@ -2,39 +2,40 @@ Rails.application.routes.draw do
 
   namespace :gtf do
     resources :video_encodings
-    resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :upload_extensions, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :storages, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :scene_keywords, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :scene_genres, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :scenes, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :permission_groups, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :models, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :media_types, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :media, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :lines, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :labels, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :image_encodings, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :image_encodeds, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :file_object_types, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :file_object_type_families, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :encoder_servers, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :directors, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :content_releases, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :contents, shallow: true do
-      resources :videos, shallow: true do
-        resources :video_files
+    resources :users, except: [:show]
+    resources :upload_extensions, except: [:show]
+    resources :upload_actions, except: [:show]
+    resources :storages, except: [:show]
+    resources :scene_keywords, except: [:show]
+    resources :scene_genres, except: [:show]
+    resources :scenes, except: [:show]
+    resources :permission_groups, except: [:show]
+    resources :models, except: [:show]
+    resources :media_types, except: [:show]
+    resources :media, except: [:show]
+    resources :lines, except: [:show]
+    resources :labels, except: [:show]
+    resources :image_encodings, except: [:show]
+    resources :image_encodeds, except: [:show]
+    resources :file_object_types, except: [:show]
+    resources :file_object_type_families, except: [:show]
+    resources :encoder_servers, except: [:show]
+    resources :directors, except: [:show]
+    resources :content_releases, except: [:show]
+    resources :contents, shallow: true, except: [:show] do
+      resources :videos, shallow: true, except: [:show] do
+        resources :video_files, except: [:show]
       end
-      resources :images, shallow: true do
-        resources :image_files
+      resources :images, shallow: true, except: [:show] do
+        resources :image_files, except: [:show]
       end
       resources :uploads
     end
-    resources :content_types, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :content_price_rates, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :configurations, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :companies, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :agents, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :content_types, except: [:show]
+    resources :content_price_rates, except: [:show]
+    resources :configurations, except: [:show]
+    resources :companies, except: [:show]
+    resources :agents, except: [:show]
   end
 
   namespace :shared do

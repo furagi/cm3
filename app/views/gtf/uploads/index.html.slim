@@ -1,19 +1,69 @@
-h1 Listing gtf_uploads
-
-table
-  thead
-    tr
-      th
-      th
-      th
-
-  tbody
-    - @uploads.each do |gtf_upload|
+h1 Uploads
+- @uploads = @uploads.nil? ? uploads : @uploads
+= link_to 'Create upload', new_gtf_content_upload_path(@content)
+.table-scroll
+  table
+    thead
       tr
-        td = link_to 'Show', gtf_upload
-        td = link_to 'Edit', edit_gtf_upload_path(gtf_upload)
-        td = link_to 'Destroy', gtf_upload, data: { confirm: 'Are you sure?' }, method: :delete
+        th ID
+        th Upload action
+        th File object type
+        th Company
+        th User
+        th Content ID
+        th Created
+        / th Secondary content ID
+        th Target_id
+        th Upload_subpath
+        th Upload_start
+        th Upload_finish
+        th Status
+        th Upload_status
+        th Encode_status
+        th Processing_status
+        th Options
+        th Json_options
+        th Encoder_message
+        th Spent_time_id
+        th Priority
+        th Warnings
+        th Upload_mode
+        th Rebuild_status_of_affected_resources
+        th
+    tbody
+      - @uploads.each do |upload|
+        tr
+          td = link_to upload.upload_id, edit_gtf_upload_path(upload)
+          td = link_to_edit_resource(upload.file_object_type, "name")
+          td = link_to_edit_resource(upload.company, "name")
+          td = link_to_edit_resource(upload.user, "name")
+          td = link_to_edit_resource(upload.content, "content_id")
+          td = upload.created
+          / td = upload.secondary_content_id
+          td = link_to_edit_resource(upload.upload_action, "name")
+          td = upload.target_id
+          td = upload.upload_subpath
+          td = upload.upload_start
+          td = upload.upload_finish
+          td = upload.status
+          td = upload.upload_status
+          td = upload.encode_status
+          td = upload.processing_status
+          td = upload.options
+          td = upload.json_options
+          td = upload.encoder_message
+          td = upload.spent_time_id
+          td = upload.priority
+          td = upload.warnings
+          td = upload.upload_mode
+          td = upload.rebuild_status_of_affected_resources
+          td.delete
+            = link_to gtf_upload_path(upload), data: { confirm: 'Are you sure?' }, method: :delete
+              = fa_icon "close", class: ["close"]
 
-br
+/ if uploads where opened as uploads, not in the content tab
+- if @content.nil?
+  = paginate @uploads
 
-= link_to 'New Upload', new_gtf_upload_path
+
+
