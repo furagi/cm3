@@ -1,0 +1,19 @@
+h1 Listing gtf_video_encodings
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @gtf_video_encodings.each do |gtf_video_encoding|
+      tr
+        td = link_to 'Show', gtf_video_encoding
+        td = link_to 'Edit', edit_gtf_video_encoding_path(gtf_video_encoding)
+        td = link_to 'Destroy', gtf_video_encoding, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Video encoding', new_gtf_video_encoding_path

@@ -1,0 +1,9 @@
+= form_for @content_type do |f|
+  - if @content_type.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@content_type.errors.count, "error")} prohibited this gtf_content_type from being saved:"
+      ul
+        - @content_type.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

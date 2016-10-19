@@ -1,0 +1,19 @@
+h1 Listing gtf_companies
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @companies.each do |gtf_company|
+      tr
+        td = link_to 'Show', gtf_company
+        td = link_to 'Edit', edit_gtf_company_path(gtf_company)
+        td = link_to 'Destroy', gtf_company, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Company', new_gtf_company_path

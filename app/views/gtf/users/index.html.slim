@@ -1,0 +1,70 @@
+h1 Users
+
+= link_to 'Create user', new_gtf_user_path
+.table-scroll
+  table
+    thead
+      tr
+        th ID
+        th Permisssion group
+        th Company
+        th Username
+        th Full name
+        th Email
+        th Phone
+        th Mobile phone
+        th Description
+        th Enabled
+        th Disabled
+        th Created
+        th Last login
+        th Language
+        / th FTP password
+        th FTP UID
+        th FTP GUID
+        th FTP homedir
+        th FTP shell
+        th FTP expiration
+        th FTP last login
+        th FTP last logout
+        th FTP count
+        th Registration IP
+        th Registration location
+        th Hide poll
+        th
+    tbody
+      - @users.each do |user|
+        tr
+          td = link_to user.user_id, edit_gtf_user_path(user)
+          td = link_to_edit_resource(user.permission_group, "name")
+          td = link_to_edit_resource(user.company, "name")
+          td = user.username
+          td = full_name(user)
+          td = user.email
+          td = user.phone
+          td = user.mobile_phone
+          td = user.description
+          td = enabled_or_disabled(user.enabled)
+          td = enabled_or_disabled(user.disabled)
+          td = user.created
+          td = user.last_login
+          td = user.language
+          / td = user.ftp_password
+          td = user.ftp_uid
+          td = user.ftp_gid
+          td = user.ftp_homedir
+          td = user.ftp_shell
+          td = user.ftp_expiration
+          td = user.ftp_lastlogin
+          td = user.ftp_lastlogout
+          td = user.ftp_count
+          td = user.reg_ip
+          td = user.reg_ip_location
+          td = user.hide_poll
+          td.delete
+            = link_to user, data: { confirm: 'Are you sure?' }, method: :delete
+              = fa_icon "close", class: ["close"]
+
+= paginate @users
+
+

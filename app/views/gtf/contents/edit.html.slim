@@ -1,0 +1,31 @@
+.columns
+  h1 #{@content.content_name}
+
+  ul#content_tabs.tabs(data-tabs)
+    li.tabs-title.is-active
+      a(href="#content_info_tab" aria-selected="true") Edit content info
+    li.tabs-title
+      a(href="#scene_info_tab") Edit scene info
+    li.tabs-title
+      a(href="#content_videos_tab") Videos
+    li.tabs-title
+      a(href="#content_images_tab") Images
+    li.tabs-title
+      a(href="#content_uploads_tab") Uploads
+
+  .tabs-content(data-tabs-content="content_tabs")
+    #content_info_tab.tabs-panel.is-active
+      = render 'form'
+    #scene_info_tab.tabs-panel
+      - if @content.scene.nil?
+        = link_to "Add scene", new_gtf_scene_path
+      - else
+        = render @content.scene
+    #content_videos_tab.tabs-panel
+      = render file: "gtf/videos/index", locals: {videos: @content.videos}
+    #content_images_tab.tabs-panel
+      = render file: "gtf/images/index", locals: {images: @content.images}
+    #content_uploads_tab.tabs-panel
+      = render file: "gtf/uploads/index", locals: {uploads: @content.uploads}
+  = link_to 'Back', gtf_contents_path
+

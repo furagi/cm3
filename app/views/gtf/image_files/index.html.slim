@@ -1,0 +1,57 @@
+h1 Image files
+- @image_files = @image_files.nil? ? image_files : @image_files
+= link_to 'Create image file', new_gtf_image_image_file_path(@image)
+.table-scroll
+  table
+    thead
+      tr
+        th ID
+        th Image
+        th Image ID
+        th Media ID
+        th Image encoding ID
+        th Created
+        th Filename
+        th Sef name
+        th Filesize
+        th Width
+        th Height
+        th Encode start
+        th Encode finish
+        th Encode status
+        th Image order
+        th Shared access
+        th
+    tbody
+      - @image_files.each do |image_file|
+        tr
+          td = link_to image_file.image_file_id, edit_gtf_image_file_path(image_file)
+          td
+            - if image_file.encode_status == "ok"
+              == render image_file
+          td = link_to_edit_resource(image_file.image, "image_id")
+          td = link_to_edit_resource(image_file.media, "media_id")
+          td = link_to_edit_resource(image_file.image_encoding, "name")
+          td = image_file.created
+          td = image_file.filename
+          td = image_file.sef_name
+          td = image_file.filesize
+          td = image_file.width
+          td = image_file.height
+          td = image_file.encode_start
+          td = image_file.encode_finish
+          td = image_file.encode_status
+          td = image_file.image_order
+          td = image_file.shared_access
+          td.delete
+            = link_to gtf_image_file_path(image_file), data: { confirm: 'Are you sure?' }, method: :delete
+              = fa_icon "close", class: ["close"]
+
+/ if image_files where opened as image_files, not in the image tab
+- if @image.nil?
+  = paginate @image_files
+
+
+
+
+

@@ -1,0 +1,1 @@
+json.array! @shared_countries, partial: 'shared_countries/shared_country', as: :shared_country

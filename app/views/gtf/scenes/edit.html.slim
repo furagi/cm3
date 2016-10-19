@@ -1,0 +1,9 @@
+.columns
+  h1 Editing scene #{@scene.name}
+
+  == render 'form'
+
+  = link_to 'Show', @scene
+  '|
+  = link_to 'Back', gtf_scenes_path
+

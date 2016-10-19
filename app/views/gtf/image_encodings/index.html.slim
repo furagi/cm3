@@ -1,0 +1,19 @@
+h1 Listing gtf_image_encodings
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @image_encodings.each do |gtf_image_encoding|
+      tr
+        td = link_to 'Show', gtf_image_encoding
+        td = link_to 'Edit', edit_gtf_image_encoding_path(gtf_image_encoding)
+        td = link_to 'Destroy', gtf_image_encoding, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Image encoding', new_gtf_image_encoding_path

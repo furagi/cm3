@@ -1,0 +1,45 @@
+- @upload = @upload.nil? ? upload : @upload
+= form_for @upload, url: url do |f|
+  - if @upload.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@upload.errors.count, "error")} prohibited this gtf_upload from being saved:"
+      ul
+        - @upload.errors.full_messages.each do |message|
+          li = message
+  .row
+    .medium-6.columns
+      = label_tag :upload_id
+      = f.number_field :upload_id, autofocus: true, placeholder: "Enter upload ID"
+      = label_tag :file_object_type_id
+      = fill_select(@upload.file_object_type, Gtf::FileObjectType, f)
+      = label_tag :company_id
+      = fill_select(@upload.company, Gtf::Company, f)
+      = label_tag :user_id
+      = fill_select(@upload.user, Gtf::User, "username", f)
+      = label_tag :content_id
+      = f.number_field :content_id, placeholder: "Enter content ID"
+      / = label_tag :secondary_content_id
+      / secondary_content_id     | int(11) unsigned
+      = label_tag :storage_id
+      = fill_select(@upload.storage, Gtf::Storage, "storage_id", f)
+      = label_tag :subpath
+      = f.text_field :subpath, placeholder: "Enter subpath"
+      = label_tag :url
+      = f.text_field :url, placeholder: "Enter url"
+      = label_tag :upload_order
+      = f.number_field :upload_order, placeholder: "Enter upload_order"
+      - unless @upload.upload_id.nil?
+        = label_tag :created
+        = f.datetime_local_field :created
+      = label_tag :status
+      = f.select :status, ['active','archive'], selected: @upload.status, placeholder: "Select status"
+      = label_tag :source_video_file_id
+      = f.number_field :source_video_file_id, placeholder: "Enter source video file id"
+      = label_tag :screenshots_rate
+      = f.number_field :screenshots_rate, step: :any, placeholder: "Enter screenshots rate"
+      p
+        = f.button "Save", class: "button"
+
+
+
+

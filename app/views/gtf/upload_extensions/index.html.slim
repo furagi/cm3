@@ -1,0 +1,19 @@
+h1 Listing gtf_upload_extensions
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @upload_extensions.each do |gtf_upload_extension|
+      tr
+        td = link_to 'Show', gtf_upload_extension
+        td = link_to 'Edit', edit_gtf_upload_extension_path(gtf_upload_extension)
+        td = link_to 'Destroy', gtf_upload_extension, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Upload extension', new_gtf_upload_extension_path

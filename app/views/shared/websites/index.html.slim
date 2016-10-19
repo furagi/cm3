@@ -1,0 +1,19 @@
+h1 Listing shared_websites
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @shared_websites.each do |shared_website|
+      tr
+        td = link_to 'Show', shared_website
+        td = link_to 'Edit', edit_shared_website_path(shared_website)
+        td = link_to 'Destroy', shared_website, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Website', new_shared_website_path

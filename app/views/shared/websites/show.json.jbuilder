@@ -1,0 +1,1 @@
+json.partial! "shared_websites/shared_website", shared_website: @shared_website

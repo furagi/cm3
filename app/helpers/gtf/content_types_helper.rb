@@ -1,0 +1,2 @@
+module Gtf::ContentTypesHelper
+end

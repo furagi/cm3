@@ -1,0 +1,19 @@
+h1 Listing shared_currencies
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @shared_currencies.each do |shared_currency|
+      tr
+        td = link_to 'Show', shared_currency
+        td = link_to 'Edit', edit_shared_currency_path(shared_currency)
+        td = link_to 'Destroy', shared_currency, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Currency', new_shared_currency_path

@@ -1,0 +1,6 @@
+.columns
+  h1 Upload #{@upload.upload_id}
+
+  = render 'form', url: @upload
+
+  = link_to 'Back', edit_gtf_content_path(@content)

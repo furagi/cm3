@@ -1,0 +1,2 @@
+module Shared::CurrenciesHelper
+end

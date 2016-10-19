@@ -1,0 +1,11 @@
+.medium-6.medium-centered.large-4.large-centered.columns
+  = form_for(:session, url: login_path) do |f|
+    .row.column.log-in-form
+      h4.text-center Log in
+      = label_tag :username
+      = f.text_field :username, autofocus: true, placeholder: 'Enter login'
+      = label_tag :password
+      = f.password_field :password, autocomplete: "off", placeholder: 'Enter password'
+      p
+        = f.button "Log in", class: "button"
+

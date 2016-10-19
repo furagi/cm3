@@ -1,0 +1,2 @@
+module Gtf::SceneGenresHelper
+end

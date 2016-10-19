@@ -1,0 +1,19 @@
+h1 Listing gtf_scene_keywords
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @scene_keywords.each do |gtf_scene_keyword|
+      tr
+        td = link_to 'Show', gtf_scene_keyword
+        td = link_to 'Edit', edit_gtf_scene_keyword_path(gtf_scene_keyword)
+        td = link_to 'Destroy', gtf_scene_keyword, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Scene keyword', new_gtf_scene_keyword_path

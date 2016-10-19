@@ -1,0 +1,19 @@
+h1 Listing gtf_lines
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @lines.each do |gtf_line|
+      tr
+        td = link_to 'Show', gtf_line
+        td = link_to 'Edit', edit_gtf_line_path(gtf_line)
+        td = link_to 'Destroy', gtf_line, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Line', new_gtf_line_path

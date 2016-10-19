@@ -1,0 +1,41 @@
+- @video = @video.nil? ? video : @video
+= form_for @video, url: url do |f|
+  - if @video.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@video.errors.count, "error")} prohibited this gtf_video from being saved:"
+      ul
+        - @video.errors.full_messages.each do |message|
+          li = message
+  .row
+    .medium-6.columns
+      = label_tag :upload_id
+      = f.number_field :upload_id, autofocus: true, placeholder: "Enter upload ID"
+      = label_tag :file_object_type_id
+      = fill_select(@video.file_object_type, Gtf::FileObjectType, f)
+      = label_tag :company_id
+      = fill_select(@video.company, Gtf::Company, f)
+      = label_tag :user_id
+      = fill_select(@video.user, Gtf::User, "username", f)
+      = label_tag :content_id
+      = f.number_field :content_id, placeholder: "Enter content ID"
+      / = label_tag :secondary_content_id
+      / secondary_content_id     | int(11) unsigned
+      = label_tag :storage_id
+      = fill_select(@video.storage, Gtf::Storage, "storage_id", f)
+      = label_tag :subpath
+      = f.text_field :subpath, placeholder: "Enter subpath"
+      = label_tag :url
+      = f.text_field :url, placeholder: "Enter url"
+      = label_tag :video_order
+      = f.number_field :video_order, placeholder: "Enter video_order"
+      - unless @video.video_id.nil?
+        = label_tag :created
+        = f.datetime_local_field :created
+      = label_tag :status
+      = f.select :status, ['active','archive'], selected: @video.status, placeholder: "Select status"
+      = label_tag :subscription_news_state
+      = f.select :subscription_news_state, ['waiting','processed'], selected: @video.subscription_news_state, placeholder: "Select subscription news state"
+      = label_tag :exporting_to_dmca_status
+      = f.select :exporting_to_dmca_status, ['started','exported'], selected: @video.exporting_to_dmca_status, placeholder: "Select exporting to DMCA status"
+      p
+        = f.button "Save", class: "button"

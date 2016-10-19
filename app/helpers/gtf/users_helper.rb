@@ -1,0 +1,2 @@
+module Gtf::UsersHelper
+end

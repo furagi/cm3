@@ -1,0 +1,2 @@
+module Gtf::SceneKeywordsHelper
+end

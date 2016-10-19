@@ -1,0 +1,2 @@
+module Gtf::DirectorsHelper
+end

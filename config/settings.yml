@@ -1,0 +1,28 @@
+salt: // depricated // array( 'host' => 'salt-intranet.gtflix.com', 'port' => 22201 ),
+cdn: cdn_host
+browser_pin_cookie: JDIALOG3
+client_id: dmca-homepage
+client_secret: secret
+company:
+  name: A VIDEO DEMAND LTD CYPRUS
+  address: 2 AYIOU PAVLOU & KADMOU, WISDOM TOWER, 3RD FLOOR, 1105 NICOSIA, CYPRUS
+htmls_folder: <%= Rails.root.join 'tmp/grabbed_pages' %>
+links:
+  support: support@idcert.net
+# NOTE: there is also dvd_match.confidence parameter (now it is always >= 95)
+# but it may change in the future. Maybe we should store it here too?
+min_duration: 60
+min_matching_piece: 0.3
+take_down:
+  allowed_users:
+    - legalporno
+    - roccosiffredi
+    - julesjordan
+  bcc_email: dmca.guard.bcc@gmail.com
+  email: copyrights@dmcaguard.com
+  ignored_domains:
+    - xnxx.com
+    - xvideos.com
+  max_notifications: 2
+  price: 1
+website_id: 74

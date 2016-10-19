@@ -1,0 +1,19 @@
+h1 Listing gtf_agents
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @agents.each do |gtf_agent|
+      tr
+        td = link_to 'Show', gtf_agent
+        td = link_to 'Edit', edit_gtf_agent_path(gtf_agent)
+        td = link_to 'Destroy', gtf_agent, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Agent', new_gtf_agent_path

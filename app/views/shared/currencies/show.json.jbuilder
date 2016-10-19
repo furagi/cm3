@@ -1,0 +1,1 @@
+json.partial! "shared_currencies/shared_currency", shared_currency: @shared_currency

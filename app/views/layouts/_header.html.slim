@@ -1,0 +1,41 @@
+nav.top-bar(data-topbar, role="navigation")
+  .top-bar-left
+    ul.dropdown.menu(data-dropdown-menu)
+      li.menu-text
+        = link_to root_path
+          | CM
+      li
+        = link_to gtf_contents_path do
+          | Content
+      li
+        a
+          | Users
+        ul.menu.vertical
+          - if is_admin?
+            li
+              = link_to gtf_users_path do
+                | CM users
+          li
+            = link_to idcert_website_users_path do
+              | Websites users
+      li
+        a
+          | Hardwares
+        ul.menu.vertical
+          li
+            = link_to gtf_storages_path do
+              | Storages
+          li
+            = link_to gtf_encoder_servers_path do
+              | Encoders
+  .top-bar-right
+    ul.menu
+      li
+        - link = is_admin? ? edit_gtf_user_path(current_user) : gtf_user_path(current_user)
+        = link_to link, class: 'user-button'  do
+          = fa_icon 'user'
+          |&nbsp; Hello,
+          span= current_user.username
+      li
+        = link_to logout_path, rel: 'nofollow', :method => :delete, class: 'sign-out' do
+          = fa_icon 'sign-out'

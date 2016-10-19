@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+
+  head
+    title = "Avodn CM3"
+
+    = favicon_link_tag
+    = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon', type: 'image/png'
+    = favicon_link_tag 'apple-touch-icon.png', rel: 'apple-touch-icon-precomposed', type: 'image/png'
+
+    meta charset='utf-8'
+    meta name='description' content='add description'
+    meta property='og:title' content=''
+    meta property='og:site_name' content=''
+    meta property='og:url' content=''
+    meta property='og:description' content=''
+    meta property='og:image' content=''
+    meta property='og:type' content='website'
+    meta name='twitter:card' content='summary_large_image'
+    meta name='twitter:site' content=''
+    meta name='twitter:title' content=''
+    meta name='twitter:description' content=''
+    meta name='twitter:image:src' content=''
+    meta name='robots' content='index, follow'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    link rel='canonical' href=''
+
+    = csrf_meta_tags
+    = stylesheet_link_tag "application"
+    = javascript_include_tag :modernizr
+
+    = yield :head
+
+  body class=controller.controller_name.dasherize
+    main
+      header
+        - if user_signed_in?
+          = render 'layouts/header'
+      .row
+        == yield
+
+    = render 'layouts/footer'
+    = javascript_include_tag 'application'
+    = render 'layouts/humane'
+    /= raw humane_flash_messages
+    = render 'layouts/ga'

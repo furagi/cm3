@@ -1,0 +1,19 @@
+h1 Listing gtf_models
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @models.each do |gtf_model|
+      tr
+        td = link_to 'Show', gtf_model
+        td = link_to 'Edit', edit_gtf_model_path(gtf_model)
+        td = link_to 'Destroy', gtf_model, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Model', new_gtf_model_path

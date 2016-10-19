@@ -1,0 +1,18 @@
+.columns
+  h1 Video #{@video.video_id}
+
+  ul#video_tabs.tabs(data-tabs)
+    li.tabs-title.is-active
+      a(href="#video_info_tab" aria-selected="true") Edit video info
+    - if (@video.video_files && @video.video_files.length > 0)
+      li.tabs-title
+        a(href="#video_files_tab") Video files
+
+  .tabs-video(data-tabs-content="video_tabs")
+    #video_info_tab.tabs-panel.is-active
+      = render 'form', url: @video
+    - if (@video.video_files && @video.video_files.length > 0)
+      #video_files_tab.tabs-panel
+        = render file: "gtf/video_files/index", locals: {video_files: @video.video_files}
+
+  = link_to 'Back', edit_gtf_content_path(@content)

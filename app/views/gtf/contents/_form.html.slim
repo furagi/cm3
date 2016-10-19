@@ -1,0 +1,29 @@
+= form_for @content do |f|
+  - if @content.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@content.errors.count, "error")} prohibited this gtf_user from being saved:"
+      ul
+        - @content.errors.full_messages.each do |message|
+          li = message
+  .row
+    .medium-6.columns
+      = label_tag :content_name
+      = f.text_field :content_name, autofocus: true, placeholder: "Enter content name"
+      = label_tag :content_type_id
+      = fill_select(@content.content_type, Gtf::ContentType, "name", f)
+      = label_tag :content_name
+      = f.text_field :content_name, placeholder: "Enter content name"
+      = label_tag :external_data
+      = f.number_field :external_data, placeholder: "Enter external data"
+      = label_tag :sef_name
+      = f.text_field :sef_name, placeholder: "Enter sef name"
+      = label_tag :access_level
+      = f.number_field :access_level, placeholder: "Enter access level"
+      = label_tag :cm_sorting_index
+      = f.number_field :cm_sorting_index, placeholder: "Enter cm sorting index"
+      p
+        = f.button "Save", class: "button"
+
+
+
+

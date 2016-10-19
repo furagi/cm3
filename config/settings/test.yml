@@ -1,0 +1,13 @@
+ga_id: UA-36878044-5
+hosts:
+  cart: http://cart.gtflix.com
+  feed: http://feed.gtflix.com
+  idcert: http://accounts.lv.gtflix.com
+  paygate: https://paygate.gtflix.com
+  secure_access: http://dev4.gtflix.com:8088
+jdialog: http://accounts.lv.gtflix.com/jdialog.js
+tools:
+  enabled: false
+  uri: http://tools.dev.dmca-guard.lan:8080
+rabbitmq:
+  conn: amqp://guest:guest@10.0.10.13:5672

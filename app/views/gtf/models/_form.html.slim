@@ -1,0 +1,9 @@
+= form_for @model do |f|
+  - if @model.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@model.errors.count, "error")} prohibited this gtf_model from being saved:"
+      ul
+        - @model.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

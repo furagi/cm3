@@ -1,0 +1,1 @@
+json.partial! "shared_countries/shared_country", shared_country: @shared_country

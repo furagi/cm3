@@ -1,0 +1,19 @@
+h1 Listing gtf_labels
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @labels.each do |gtf_label|
+      tr
+        td = link_to 'Show', gtf_label
+        td = link_to 'Edit', edit_gtf_label_path(gtf_label)
+        td = link_to 'Destroy', gtf_label, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Label', new_gtf_label_path

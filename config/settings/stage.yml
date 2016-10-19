@@ -1,0 +1,12 @@
+ga_id: UA-36878044-5
+hosts:
+  cart: http://cart.ttc-stage.avodn.com
+  feed: http://feed.ttc-stage.avodn.com
+  idcert: http://idcert.ttc-stage.avodn.com
+  paygate: http://paygate.ttc-stage.avodn.com
+  secure_access: http://secure-access-stage1.ttc-stage.avodn.lan:8088
+htmls_folder: /mnt/grabbed_page/stage
+jdialog: http://idcert.ttc-stage.avodn.com/jdialog.js
+tools:
+  enabled: false
+  uri: http://demo-tools.ttc-stage.avodn.com

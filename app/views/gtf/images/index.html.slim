@@ -1,0 +1,54 @@
+h1 Images
+- @images = @images.nil? ? images : @images
+= link_to 'Create image', new_gtf_content_image_path(@content)
+.table-scroll
+  table
+    thead
+      tr
+        th ID
+        th Image
+        th Upload ID
+        th File object type ID
+        th Company ID
+        th User ID
+        th Content ID
+        / th Secondary content ID
+        th Storage ID
+        th Subpath
+        th Url
+        th Video order
+        th Created
+        th Status
+        th Source video file ID
+        th Screenshots rate
+        th
+    tbody
+      - @images.each do |image|
+        tr
+          td = link_to image.image_id, edit_gtf_image_path(image)
+          td
+            = render image
+          td = link_to_edit_resource(image.upload, "upload_id")
+          td = link_to_edit_resource(image.file_object_type, "name")
+          td = link_to_edit_resource(image.company, "name")
+          td = link_to_edit_resource(image.user, "name")
+          td = link_to_edit_resource(image.content, "content_id")
+          / td = image.secondary_content_id
+          td = image.storage_id
+          td = image.subpath
+          td = image.url
+          td = image.image_order
+          td = image.created
+          td = image.status
+          td
+            - unless image.source_video_file.nil?
+              - source = image.source_video_file
+              = link_to source.video_file_id, edit_gtf_video_file_path(source)
+          td = image.screenshots_rate
+          td.delete
+            = link_to gtf_image_path(image), data: { confirm: 'Are you sure?' }, method: :delete
+              = fa_icon "close", class: ["close"]
+
+/ if images where opened as images, not in the content tab
+- if @content.nil?
+  = paginate @images

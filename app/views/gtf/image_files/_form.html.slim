@@ -1,0 +1,41 @@
+/ url should be passed to template as locals
+= form_for @image_file, url: url do |f|
+  - if @image_file.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@image_file.errors.count, "error")} prohibited this image file from being saved:"
+      ul
+        - @image_file.errors.full_messages.each do |message|
+          li = message
+  .row
+    .medium-6.columns
+      = label_tag :image_id
+      = f.number_field :image_id, value: @image.image_id, autofocus: true, placeholder: "Enter image ID"
+      = label_tag :media_id
+      = f.number_field :media_id, placeholder: "Enter media ID"
+      = label_tag :image_encoding_id
+      = fill_select(@image_file.image_encoding, Gtf::ImageEncoding, f)
+      - unless @image_file.image_file_id.nil? #show only if we editing already existing image_file
+        = label_tag :created
+        = f.datetime_local_field :created
+      = label_tag :filename
+      = f.text_field :filename, placeholder: "Enter filename"
+      = label_tag :sef_name
+      = f.text_field :sef_name, placeholder: "Enter sef name"
+      = label_tag :filesize
+      = f.number_field :filesize, placeholder: "Enter filesize"
+      = label_tag :width
+      = f.number_field :width, placeholder: "Enter width"
+      = label_tag :height
+      = f.number_field :height, placeholder: "Enter height"
+      = label_tag :encode_start
+      = f.datetime_local_field :encode_start
+      = label_tag :encode_finish
+      = f.datetime_local_field :encode_finish
+      = label_tag :encode_status
+      = f.select :encode_status, ['processing','ok','error'], selected: @image_file.encode_status, placeholder: "Select encode status"
+      = label_tag :image_order
+      = f.number_field :image_order, placeholder: "Enter image_order"
+      = label_tag :shared_access
+      = f.select :shared_access, ["yes", "no"], selected: @image_file.shared_access, placeholder: "Select shared access"
+      p
+        = f.button "Save", class: "button"

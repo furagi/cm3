@@ -1,0 +1,34 @@
+h1 Scenes
+
+= link_to 'Create content', new_gtf_content_path
+.table-scroll
+  table
+    thead
+      tr
+        th ID
+        th Content type
+        th Name
+        th External data
+        th Sef name
+        th Access level
+        th Cm sorting index
+        th
+    tbody
+      - @contents.each do |content|
+        tr
+          td
+            = link_to content.content_id, edit_gtf_content_path(content)
+          td = link_to_edit_resource(content.content_type, "name")
+          td = content.content_name
+          td = content.external_data
+          td = content.sef_name
+          td = content.access_level
+          td = content.cm_sorting_index
+          td.delete
+            = link_to content, data: { confirm: 'Are you sure?' }, method: :delete
+              = fa_icon "close", class: ["close"]
+
+= paginate @contents
+
+
+

@@ -1,0 +1,7 @@
+.row
+  .columns
+    h1 New image file
+
+    = render "form", url: gtf_image_image_files_path(@image)
+
+    = link_to 'Back', edit_gtf_image_path(@image)

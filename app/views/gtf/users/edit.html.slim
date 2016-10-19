@@ -1,0 +1,9 @@
+.columns
+  h1 Editing user #{@user.username}
+
+  == render 'form'
+
+  = link_to 'Show', @user
+  '|
+  = link_to 'Back', gtf_users_path
+

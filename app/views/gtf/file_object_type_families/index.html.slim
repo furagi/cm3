@@ -1,0 +1,19 @@
+h1 Listing gtf_file_object_type_families
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @file_object_type_families.each do |gtf_file_object_type_family|
+      tr
+        td = link_to 'Show', gtf_file_object_type_family
+        td = link_to 'Edit', edit_gtf_file_object_type_family_path(gtf_file_object_type_family)
+        td = link_to 'Destroy', gtf_file_object_type_family, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New File object type family', new_gtf_file_object_type_family_path

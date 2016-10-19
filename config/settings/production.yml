@@ -1,0 +1,15 @@
+ga_id: UA-55073892-3
+hosts:
+  cart: http://cart.ttc-prod.avodn.com
+  feed: http://feed.ttc-prod.avodn.com
+  idcert: https://idcert.net
+  paygate: https://paygate.avodn.com
+  secure_access: http://sa.ttc-prod.avodn.com:8088
+htmls_folder: /mnt/grabbed_page/production
+jdialog: https://idcert.net/jdialog.js
+tools:
+  enabled: true
+  uri: http://tools-dev.dmca-guard.com
+rabbitmq:
+  conn: amqp://guest:guest@10.0.10.13:5672
+file_upload_dir: /srv/tmp/videos

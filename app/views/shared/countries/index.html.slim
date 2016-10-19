@@ -1,0 +1,19 @@
+h1 Listing shared_countries
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @shared_countries.each do |shared_country|
+      tr
+        td = link_to 'Show', shared_country
+        td = link_to 'Edit', edit_shared_country_path(shared_country)
+        td = link_to 'Destroy', shared_country, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Country', new_shared_country_path

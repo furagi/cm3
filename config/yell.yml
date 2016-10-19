@@ -1,0 +1,28 @@
+development: &development
+  colors: true
+
+test: *development
+
+stage:
+  level: 'gte.info'
+  keep: 7
+  adapters:
+    - datefile:
+        level: 'gte.info'
+    - gelf:
+        level: 'gte.error'
+        host: 'graylog1.ttc-prod.avodn.lan'
+        port: 12201
+        facility: 'stage'
+
+production:
+  level: 'gte.info'
+  keep: 7
+  adapters:
+    - datefile:
+        level: 'gte.info'
+    - gelf:
+        level: 'gte.error'
+        host: 'graylog1.ttc-prod.avodn.lan'
+        port: 12201
+        facility: 'prod'

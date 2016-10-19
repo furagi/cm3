@@ -1,0 +1,6 @@
+- if model.errors.any?
+  #error-explanation
+    h4 #{pluralize(model.errors.count, "error")} prohibited this #{name} from being saved:
+    ul
+      - for message in model.errors.full_messages
+        li = message

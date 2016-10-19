@@ -1,0 +1,19 @@
+= form_for @encoder_server do |f|
+  - if @encoder_server.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@encoder_server.errors.count, "error")} prohibited this gtf_encoder_server from being saved:"
+      ul
+        - @encoder_server.errors.full_messages.each do |message|
+          li = message
+  .row
+    .medium-6.columns
+      = label_tag :name
+      = f.text_field :name, autofocus: true, placeholder: 'Enter encoder server name'
+      = label_tag :description
+      = f.text_field :description, placeholder: 'Enter encoder server description'
+      = label_tag :status
+      = f.select :status, ["busy", "free"], selected: @encoder_server.status
+      = label_tag :is_usable
+      = f.check_box :is_usable, {}, "yes", "no"
+      p
+        = f.button "Save", class: "button"

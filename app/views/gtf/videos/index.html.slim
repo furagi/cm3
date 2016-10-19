@@ -1,0 +1,52 @@
+h1 Videos
+- @videos = @videos.nil? ? videos : @videos
+= link_to 'Create video', new_gtf_content_video_path(@content)
+.table-scroll
+  table
+    thead
+      tr
+        th ID
+        th
+        th Upload ID
+        th File object type ID
+        th Company ID
+        th User ID
+        th Content ID
+        / th Secondary content ID
+        th Storage ID
+        th Subpath
+        th Url
+        th Video order
+        th Created
+        th Status
+        th Subscription news state
+        th Exporting to dmca status
+        th
+    tbody
+      - @videos.each do |video|
+        tr
+          td = link_to video.video_id, edit_gtf_video_path(video)
+          td
+            == render video
+          td = link_to_edit_resource(video.upload, "upload_id")
+          td = link_to_edit_resource(video.file_object_type, "name")
+          td = link_to_edit_resource(video.company, "name")
+          td = link_to_edit_resource(video.user, "name")
+          td = link_to_edit_resource(video.content, "content_id")
+          / td = video.secondary_content_id
+          td = video.storage_id
+          td = video.subpath
+          td = video.url
+          td = video.video_order
+          td = video.created
+          td = video.status
+          td = video.subscription_news_state
+          td = video.exporting_to_dmca_status
+          td.delete
+            = link_to gtf_video_path(video), data: { confirm: 'Are you sure?' }, method: :delete
+              = fa_icon "close", class: ["close"]
+
+/ if videos where opened as videos, not in the content tab
+- if @content.nil?
+  = paginate @videos
+

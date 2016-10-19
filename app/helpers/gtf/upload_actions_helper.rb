@@ -1,0 +1,2 @@
+module Gtf::UploadActionsHelper
+end

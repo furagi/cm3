@@ -1,0 +1,1 @@
+json.partial! "gtf_video_encodings/gtf_video_encoding", gtf_video_encoding: @gtf_video_encoding

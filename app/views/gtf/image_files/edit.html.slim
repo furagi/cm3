@@ -1,0 +1,6 @@
+.columns
+  h1 Image file #{@image_file.image_file_id}
+
+  = render "form", url: @image_file
+
+  = link_to 'Back', edit_gtf_image_path(@image)
