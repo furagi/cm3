@@ -1,18 +1,6 @@
 .columns
-  h1 Image #{@image.image_id}
+  h1 Upload #{@upload.upload_id}
 
-  ul#image_tabs.tabs(data-tabs)
-    li.tabs-title.is-active
-      a(href="#image_info_tab" aria-selected="true") Edit image info
-    - if (@image.image_files && @image.image_files.length > 0)
-      li.tabs-title
-        a(href="#image_files_tab") Image files
-
-  .tabs-image(data-tabs-content="image_tabs")
-    #image_info_tab.tabs-panel.is-active
-      = render 'form', url: @image
-    - if (@image.image_files && @image.image_files.length > 0)
-      #image_files_tab.tabs-panel
-        = render file: "gtf/image_files/index", locals: {image_files: @image.image_files}
+  = render 'form', url: @upload
 
   = link_to 'Back', edit_gtf_content_path(@content)

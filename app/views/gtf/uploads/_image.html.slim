@@ -1,5 +1,0 @@
-.lightgallery-container.thumbnails-container
-  - image.image_files.each do |image_file|
-    - if image_file.encode_status == "ok"
-      .item(data-src=image.image_files.first.url)
-        img(src=image.image_files.first.url)
